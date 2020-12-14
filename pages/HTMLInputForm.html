@@ -37,6 +37,7 @@
     <div>
       <label for="tel">tel input type: </label>
       <input type="tel" id="tel" name="tel">
+      <error-output class="tel-error"></error-output>
     </div>
     <div>
       <label for="search">search input type: </label>
@@ -86,6 +87,16 @@
         errorEmail.textContent = "";
       else
         errorEmail.textContent = "Invalid email"
+    });
+    // To validate Phn Number
+    const mobileInput = document.querySelector("#tel");
+    const errorMobile = document.querySelector(".tel-error");
+    mobileInput.addEventListener('input', function () {
+      let mobileRegex = RegExp("^[1-9]{1}[0-9]{9}$");
+      if (mobileRegex.test(mobileInput.value) || mobileInput.value == "")
+        errorMobile.textContent = "";
+      else
+        errorMobile.textContent = "Invalid number"
     });
   </script>
 </body>

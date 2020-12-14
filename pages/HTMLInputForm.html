@@ -18,12 +18,12 @@
     </div>
     <div>
       <label for="pwd">password input type: </label>
-      <input type="password" id="pwd" name="pwd">
+      <input type="password" id="pwd" name="pwd" required>
       <error-output class="pwd-error"></output>
     </div>
     <div>
       <label for="email">email input type: </label>
-      <input type="email" id="email" name="email">
+      <input type="email" id="email" name="email" required>
       <error-output class="email-error"></error-output>
     </div>
     <div>
@@ -32,11 +32,11 @@
     </div>
     <div>
       <label for="number">number input type: </label>
-      <input type="number" id="number" name="number">
+      <input type="number" id="number" name="number" required>
     </div>
     <div>
       <label for="tel">tel input type: </label>
-      <input type="tel" id="tel" name="tel">
+      <input type="tel" id="tel" name="tel" required>
       <error-output class="tel-error"></error-output>
     </div>
     <div>
@@ -45,12 +45,12 @@
     </div>
     <div class="nativeDateTimePicker">
       <label for="party">Choose Date and Time </label>
-      <input type="datetime-local" id="party" name="bday">
+      <input type="datetime-local" id="party" name="bday" required>
       <span class="validity"></span>
     </div>
     <div>
       <label for="salary">Choose your salary </label>
-      <input type="range" id="salary" name="salary" min="30000" max="50000" step="100" value="30000">
+      <input type="range" id="salary" name="salary" min="30000" max="50000" step="100" value="30000" required>
       <output class="salary-output" for="salary">30000</span>
     </div>
     <div>
@@ -97,6 +97,13 @@
         errorMobile.textContent = "";
       else
         errorMobile.textContent = "Invalid number"
+    });
+    // To take salary input
+    const salary = document.querySelector('#salary');
+    const output = document.querySelector('.salary-output');
+    output.textContent = salary.value;
+    salary.addEventListener('input', function () {
+      output.textContent = salary.value;
     });
   </script>
 </body>

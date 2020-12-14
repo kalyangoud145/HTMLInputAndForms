@@ -19,6 +19,7 @@
     <div>
       <label for="pwd">password input type: </label>
       <input type="password" id="pwd" name="pwd">
+      <error-output class="pwd-error"></output>
     </div>
     <div>
       <label for="email">email input type: </label>
@@ -57,13 +58,23 @@
   <script>
     const nameInput = document.querySelector("#text");
     const errorText = document.querySelector(".text-error");
-    //To validate name using regex
+    // To validate name using regex
     text.addEventListener('input', function () {
       let nameRegex = RegExp("^[A-Z]{1}[A-Za-z]{2,}$")
       if (nameRegex.test(nameInput.value))
         errorText.textContent = "";
       else
         errorText.textContent = "Invalid Name"
+    });
+    // To validate password
+    const password = document.querySelector("#pwd");
+    const errorPwd = document.querySelector(".pwd-error");
+    password.addEventListener('input', function () {
+      let pwdRegex = RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=[\\w]*[\\W][\\w]*$)(?=.{8,}$).*$");
+      if (pwdRegex.test(password.value) || password.value == "")
+        errorPwd.textContent = "";
+      else
+        errorPwd.textContent = "Invalid Password";
     });
   </script>
 </body>
